@@ -9,8 +9,15 @@ app.use(
 );
 
 app.use(
-  "/build/",
+  "/build",
   express.static(path.join(__dirname, "node_modules/three/build"))
+);
+
+app.use(
+  "/loaders",
+  express.static(
+    path.join(__dirname, "node_modules/three/examples/jsm/loaders")
+  )
 );
 
 app.get("/*", (req, res) => {

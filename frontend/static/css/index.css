@@ -1,41 +1,27 @@
-body {
-  --nav-width: 200px;
-  margin: 0 0 0 var(--nav-width);
-  font-family: "Quicksand", sans-serif;
-  font-size: 18px;
-  z-index: 0;
-}
-
-.nav {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: var(--nav-width);
-  height: 100vh;
-  background: #222222;
-}
-
-.nav__link {
-  display: block;
-  padding: 12px 18px;
-  text-decoration: none;
-  color: #eeeeee;
-  font-weight: 500;
-}
-
-.nav__link:hover {
-  background: rgba(255, 255, 255, 0.05);
-}
-
-#app {
-  margin: 2em;
-  line-height: 1.5;
-  font-weight: 500;
-  z-index: 0;
-}
-
-a {
-  color: #009579;
+:root {
+  font-size: 16px;
+  font-family: "Open Sans", sans-serif;
+  /* --text-primary: #ff9300;
+  --text-secondary: #f9b208;
+  --bg-primary: #1db9c3;
+  --bg-secondary: #0ad4b6; */
+  /* --text-primary: #fff89a;
+  --text-secondary: #FAFCC2;
+  --bg-primary: #9adcff;
+  --bg-secondary: #99FEFF; */
+  /* --text-primary: #fdca40;
+  --text-secondary: #df2935;
+  --bg-primary: #3772ff;
+  --bg-secondary: #e6e8e6; */
+  --text-primary: #ff6d00;
+  --text-secondary: #ff8500;
+  --bg-primary: #0096c7;
+  --bg-secondary: #0077b6;
+  /* --text-primary: #2dc653;
+  --text-secondary: #2dc653;
+  --bg-primary: #00bbf9;
+  --bg-secondary: #1e96fc; */
+  --transition-speed: 600ms;
 }
 
 canvas {
@@ -44,3 +30,161 @@ canvas {
   right: 0;
   z-index: 1;
 }
+
+body {
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  margin: 0;
+  padding: 0;
+}
+body::-webkit-scrollbar {
+  width: 0.25rem;
+}
+body::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+}
+body::-webkit-scrollbar-thumb {
+  background: var(--text-secondary);
+}
+
+/*  rem is relative to the font size on the root element
+      therefore: 5rem * 16px = 80px  */
+main {
+  margin-left: 5rem;
+}
+main p {
+  font-weight: 600;
+}
+
+.navbar {
+  width: 5rem;
+  /* vh is also a relative unit, relative to size of
+      of the viewport */
+  height: 100vh;
+  position: fixed;
+  background-color: var(--text-secondary);
+  transition: width 300ms ease;
+  z-index: 2;
+}
+
+.navbar:hover {
+  width: 16rem;
+}
+
+.navbar:hover .link-text {
+  display: block;
+  font-weight: 500;
+}
+.navbar-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item {
+  width: 100%;
+  position: relative;
+  z-index: 2;
+}
+
+.nav-item:last-child {
+  margin-top: auto;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  height: 5rem;
+  color: var(--bg-primary);
+  text-decoration: none;
+  filter: grayscale(100%) opacity(0.7);
+  transition: var(--transition-speed);
+}
+
+.nav-link:hover {
+  filter: grayscale(0%) opacity(1);
+  background: var(--text-primary);
+  color: var(--bg-primary);
+}
+
+.link-text {
+  display: none;
+  margin-left: 1rem;
+  pointer-events: none;
+}
+.nav-link .far {
+  font-size: 2rem;
+  margin: 0 1.75rem;
+}
+
+.nav-link .fa-newspaper {
+  margin: 0 1.5rem;
+}
+
+.far {
+  color: var(--bg-primary);
+  pointer-events: none;
+}
+
+.title {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2rem;
+}
+
+.pyramid {
+  width: 4rem;
+}
+
+.nav-item:hover #article-page,
+.nav-item:focus #article-page {
+  opacity: 1;
+  visibility: visible;
+  z-index: 2;
+}
+
+#article-page {
+  width: 40vw;
+  height: 60vh;
+  background-color: var(--text-secondary);
+  position: absolute;
+  left: 14rem;
+  top: 1rem;
+  border-radius: 4rem;
+  border-style: solid;
+  border-width: 3px;
+  border-color: var(--bg-secondary);
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 1s ease-in-out;
+}
+
+#app {
+  margin-left: 18em;
+  line-height: 1.5;
+  font-weight: 500;
+  z-index: 0;
+}
+
+/* .hide{
+  opacity: 0;
+  transition: opacity 0.5s ease-out;
+  -webkit-transition: opacity 0.5s ease-out;
+  -moz-transition: opacity 0.5s ease-out;
+  -o-transition: opacity 0.5s ease-out;
+}
+
+.show{
+  opacity: 1;
+  transition: opacity 0.5s ease-in;
+  -webkit-transition: opacity 0.5s ease-in;
+  -moz-transition: opacity 0.5s ease-in;
+  -o-transition: opacity 0.5s ease-in;
+
+} */
